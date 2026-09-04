@@ -1,4 +1,4 @@
-const CACHE_NAME = "multiplication-v1";
+const CACHE_NAME = "multiplication-v2";
 
 const FILES_TO_CACHE = ["./", "./index.html", "./manifest.json"];
 
