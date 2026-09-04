@@ -1,801 +1,1536 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+<meta charset="UTF-8">
 
-    <meta
-      name="viewport"
+<meta name="viewport"
       content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0, user-scalable=no"
-    />
+      maximum-scale=1.0, user-scalable=no">
 
-    <title> رضواني لقمان سوف يتعلم </title>
+<title>رضواني لقمان سوف يتعلم</title>
 
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#4CAF50" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4CAF50">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <style>
-      * {
-        box-sizing: border-box;
-        -webkit-tap-highlight-color: transparent;
-      }
+<style>
 
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        min-height: 100vh;
-        color: #222;
-      }
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
 
-      .container {
-        width: 100%;
-        max-width: 600px;
-        margin: auto;
-        padding: 15px;
-      }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    min-height: 100vh;
+    color: #222;
+}
 
-      .card {
-        background: white;
-        border-radius: 22px;
-        padding: 22px;
-        margin: 10px 0;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      }
+.container {
+    width: 100%;
+    max-width: 620px;
+    margin: auto;
+    padding: 15px;
+}
 
-      h1 {
-        text-align: center;
-        margin-top: 5px;
-        color: #333;
-      }
+.card {
+    background: white;
+    border-radius: 24px;
+    padding: 22px;
+    margin: 10px 0;
+    box-shadow: 0 8px 25px rgba(0,0,0,.20);
+}
 
-      h2 {
-        text-align: center;
+.hidden {
+    display: none !important;
+}
+
+h1 {
+    text-align: center;
+    margin: 5px 0 10px;
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    font-size: 20px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+}
+
+/* =========================
+   STATISTIQUES ACCUEIL
+========================= */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.stat-box {
+    background: #f1f3f5;
+    border-radius: 14px;
+    padding: 12px 5px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #666;
+}
+
+/* =========================
+   TABLES
+========================= */
+
+.tables {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.table-btn {
+    background: #e9ecef;
+    color: #333;
+    font-weight: bold;
+}
+
+.table-btn.selected {
+    background: #28a745;
+    color: white;
+    transform: scale(1.04);
+}
+
+/* =========================
+   DIFFICULTE
+========================= */
+
+.difficulties {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 8px;
+}
+
+.difficulty {
+    color: white;
+    font-weight: bold;
+}
+
+.easy {
+    background: #28a745;
+}
+
+.medium {
+    background: #ff9800;
+}
+
+.hard {
+    background: #dc3545;
+}
+
+.difficulty.selected {
+    outline: 4px solid #333;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+button {
+    border: none;
+    border-radius: 13px;
+    padding: 14px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+button:disabled {
+    opacity: .65;
+}
+
+.start {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.secondary {
+    width: 100%;
+    background: #17a2b8;
+    color: white;
+    margin-top: 10px;
+}
+
+.home-btn {
+    width: 100%;
+    background: #6c757d;
+    color: white;
+    margin-top: 12px;
+}
+
+.learn-btn {
+    width: 100%;
+    background: #6f42c1;
+    color: white;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* =========================
+   JEU
+========================= */
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.question {
+    text-align: center;
+    font-size: 44px;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+.answers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.answer {
+    background: #f1f3f5;
+    font-size: 25px;
+    font-weight: bold;
+    min-height: 70px;
+}
+
+.answer.correct {
+    background: #28a745;
+    color: white;
+}
+
+.answer.wrong {
+    background: #dc3545;
+    color: white;
+}
+
+/* =========================
+   TIMER
+========================= */
+
+.timer {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 15px 0 8px;
+}
+
+.timer-bar {
+    width: 100%;
+    height: 12px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.timer-progress {
+    height: 100%;
+    width: 100%;
+    background: #28a745;
+    transition: width .1s linear;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    min-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+.next {
+    width: 100%;
+    background: #6f42c1;
+    color: white;
+    display: none;
+    font-weight: bold;
+}
+
+/* =========================
+   PROGRESSION
+========================= */
+
+.global-progress {
+    margin: 15px 0;
+}
+
+.global-progress-bar {
+    height: 18px;
+    background: #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.global-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #28a745;
+    transition: width .5s;
+}
+
+.progress-table {
+    margin: 14px 0;
+}
+
+.progress-title {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    height: 13px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #28a745;
+    width: 0%;
+}
+
+/* =========================
+   ERREURS
+========================= */
+
+.error-item {
+    background: #fff3f3;
+    border-left: 5px solid #dc3545;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+}
+
+.error-item strong {
+    font-size: 19px;
+}
+
+.error-count {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* =========================
+   RESULTAT
+========================= */
+
+.result {
+    text-align: center;
+}
+
+.big-score {
+    font-size: 48px;
+    font-weight: bold;
+    color: #28a745;
+    margin: 15px;
+}
+
+.result-message {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.xp-earned {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6f42c1;
+}
+
+/* =========================
+   NIVEAU
+========================= */
+
+.level-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.level-title {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.xp-bar {
+    height: 14px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.xp-fill {
+    height: 100%;
+    background: #6f42c1;
+    width: 0%;
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.badges {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.badge {
+    text-align: center;
+    background: #f1f3f5;
+    border-radius: 12px;
+    padding: 10px 5px;
+    font-size: 12px;
+}
+
+.badge-icon {
+    font-size: 27px;
+}
+
+.badge.locked {
+    opacity: .35;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+.success-animation {
+    animation: success .5s ease;
+}
+
+@keyframes success {
+    0% {
+        transform: scale(.8);
+        opacity: .3;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.shake {
+    animation: shake .3s;
+}
+
+@keyframes shake {
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:400px) {
+
+    .card {
+        padding: 17px;
+    }
+
+    .question {
+        font-size: 35px;
+    }
+
+    .answer {
         font-size: 21px;
-      }
+        min-height: 65px;
+    }
 
-      .hidden {
-        display: none !important;
-      }
+    button {
+        font-size: 15px;
+    }
 
-      /* ================= TABLES ================= */
+    .dashboard {
+        gap: 5px;
+    }
+}
 
-      .tables {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin: 20px 0;
-      }
+</style>
+</head>
 
-      .table-btn {
-        background: #e9ecef;
-        color: #333;
-        font-weight: bold;
-      }
+<body>
 
-      .table-btn.selected {
-        background: #28a745;
-        color: white;
-        transform: scale(1.03);
-      }
+<div class="container">
 
-      /* ================= DIFFICULTE ================= */
-
-      .difficulties {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-        margin: 15px 0;
-      }
-
-      .difficulty {
-        color: white;
-        font-weight: bold;
-      }
-
-      .easy {
-        background: #28a745;
-      }
-
-      .medium {
-        background: #ff9800;
-      }
-
-      .hard {
-        background: #dc3545;
-      }
-
-      .difficulty.selected {
-        outline: 4px solid #333;
-      }
-
-      /* ================= BOUTONS ================= */
-
-      button {
-        border: none;
-        border-radius: 13px;
-        padding: 14px 10px;
-        font-size: 16px;
-        cursor: pointer;
-        touch-action: manipulation;
-      }
-
-      button:disabled {
-        opacity: 0.65;
-      }
-
-      .start {
-        width: 100%;
-        background: #007bff;
-        color: white;
-        font-size: 19px;
-        font-weight: bold;
-        margin-top: 10px;
-      }
-
-      .home-btn {
-        width: 100%;
-        background: #6c757d;
-        color: white;
-        margin-top: 12px;
-      }
-
-      .secondary {
-        width: 100%;
-        background: #17a2b8;
-        color: white;
-        margin-top: 10px;
-      }
-
-      /* ================= JEU ================= */
-
-      .info {
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        font-size: 16px;
-      }
-
-      .question {
-        text-align: center;
-        font-size: 42px;
-        font-weight: bold;
-        margin: 30px 0;
-      }
-
-      .answers {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
-      .answer {
-        background: #f1f3f5;
-        font-size: 25px;
-        font-weight: bold;
-        min-height: 70px;
-      }
-
-      .answer.correct {
-        background: #28a745;
-        color: white;
-      }
-
-      .answer.wrong {
-        background: #dc3545;
-        color: white;
-      }
-
-      /* ================= TIMER ================= */
-
-      .timer {
-        text-align: center;
-        font-size: 28px;
-        font-weight: bold;
-        margin: 15px 0 8px;
-      }
-
-      .timer-bar {
-        width: 100%;
-        height: 12px;
-        background: #ddd;
-        border-radius: 10px;
-        overflow: hidden;
-      }
-
-      .timer-progress {
-        height: 100%;
-        width: 100%;
-        background: #28a745;
-        transition: width 0.1s linear;
-      }
-
-      /* ================= MESSAGE ================= */
-
-      .message {
-        min-height: 35px;
-        text-align: center;
-        font-weight: bold;
-        font-size: 19px;
-        margin: 15px 0;
-      }
-
-      .next {
-        width: 100%;
-        background: #6f42c1;
-        color: white;
-        display: none;
-        font-weight: bold;
-      }
-
-      /* ================= PROGRESSION ================= */
-
-      .progress-table {
-        margin: 12px 0;
-      }
-
-      .progress-title {
-        display: flex;
-        justify-content: space-between;
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-
-      .progress-bar {
-        height: 13px;
-        background: #ddd;
-        border-radius: 10px;
-        overflow: hidden;
-      }
-
-      .progress-fill {
-        height: 100%;
-        background: #28a745;
-        width: 0%;
-      }
-
-      /* ================= ERREURS ================= */
-
-      .error-item {
-        background: #fff3f3;
-        border-left: 5px solid #dc3545;
-        padding: 12px;
-        margin: 8px 0;
-        border-radius: 8px;
-      }
-
-      .error-item strong {
-        font-size: 19px;
-      }
-
-      .error-count {
-        color: #dc3545;
-        font-weight: bold;
-      }
-
-      /* ================= RESULTAT ================= */
-
-      .result {
-        text-align: center;
-      }
-
-      .big-score {
-        font-size: 42px;
-        font-weight: bold;
-        color: #28a745;
-      }
-
-      .stat {
-        font-size: 18px;
-        margin: 10px;
-      }
-
-      /* ================= MOBILE ================= */
-
-      @media (max-width: 400px) {
-        .card {
-          padding: 17px;
-        }
-
-        .question {
-          font-size: 35px;
-        }
-
-        .answer {
-          font-size: 21px;
-        }
-
-        button {
-          font-size: 15px;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <!-- =====================================================
+<!-- =====================================================
      ACCUEIL
 ===================================================== -->
 
-      <section id="home" class="card">
-        <h1>رضواني لقمان سوف يتعلم</h1>
+<section id="home" class="card">
 
-        <h2>Choisis une table</h2>
+<h1>رضواني لقمان سوف يتعلم</h1>
 
-        <div class="tables">
-          <button class="table-btn" onclick="selectTable(1)">× 1</button>
-          <button class="table-btn" onclick="selectTable(2)">× 2</button>
-          <button class="table-btn" onclick="selectTable(3)">× 3</button>
+<p class="subtitle">
+    🧠 Apprendre les tables de multiplication
+</p>
 
-          <button class="table-btn" onclick="selectTable(4)">× 4</button>
-          <button class="table-btn" onclick="selectTable(5)">× 5</button>
-          <button class="table-btn" onclick="selectTable(6)">× 6</button>
+<!-- DASHBOARD -->
 
-          <button class="table-btn" onclick="selectTable(7)">× 7</button>
-          <button class="table-btn" onclick="selectTable(8)">× 8</button>
-          <button class="table-btn" onclick="selectTable(9)">× 9</button>
+<div class="dashboard">
+
+    <div class="stat-box">
+        <div id="homeLevel" class="stat-number">1</div>
+        <div class="stat-label">⭐ Niveau</div>
+    </div>
+
+    <div class="stat-box">
+        <div id="homeXP" class="stat-number">0</div>
+        <div class="stat-label">✨ XP</div>
+    </div>
+
+    <div class="stat-box">
+        <div id="homeStreak" class="stat-number">0</div>
+        <div class="stat-label">🔥 Série</div>
+    </div>
+
+</div>
+
+<h2>Choisis une table</h2>
+
+<div class="tables">
+
+<button class="table-btn" onclick="selectTable(1)">× 1</button>
+<button class="table-btn" onclick="selectTable(2)">× 2</button>
+<button class="table-btn" onclick="selectTable(3)">× 3</button>
+
+<button class="table-btn" onclick="selectTable(4)">× 4</button>
+<button class="table-btn" onclick="selectTable(5)">× 5</button>
+<button class="table-btn" onclick="selectTable(6)">× 6</button>
+
+<button class="table-btn" onclick="selectTable(7)">× 7</button>
+<button class="table-btn" onclick="selectTable(8)">× 8</button>
+<button class="table-btn" onclick="selectTable(9)">× 9</button>
+
+</div>
+
+<p id="selectedInfo"
+   style="text-align:center;font-weight:bold">
+   Choisis une table
+</p>
+
+<h2>⏱️ Difficulté</h2>
+
+<div class="difficulties">
+
+<button class="difficulty easy"
+        onclick="selectDifficulty(15,this)">
+    🟢 Facile<br>15 s
+</button>
+
+<button class="difficulty medium selected"
+        onclick="selectDifficulty(10,this)">
+    🟠 Moyen<br>10 s
+</button>
+
+<button class="difficulty hard"
+        onclick="selectDifficulty(5,this)">
+    🔴 Difficile<br>5 s
+</button>
+
+</div>
+
+<button class="start"
+        onclick="startGame()">
+    🚀 S'ENTRAÎNER
+</button>
+
+<button class="learn-btn"
+        onclick="startLearning()">
+    📚 APPRENDRE MA TABLE
+</button>
+
+<button class="secondary"
+        onclick="showProgress()">
+    📈 Ma progression
+</button>
+
+<button class="secondary"
+        onclick="showErrors()">
+    ❌ Mes erreurs
+</button>
+
+<div class="level-card">
+
+    <div class="level-title">
+
+        <span id="levelText">
+            Niveau 1
+        </span>
+
+        <span id="xpText">
+            0 / 100 XP
+        </span>
+
+    </div>
+
+    <div class="xp-bar">
+
+        <div id="xpFill"
+             class="xp-fill">
         </div>
 
-        <p id="selectedInfo" style="text-align: center; font-weight: bold">
-          Choisis une table
-        </p>
+    </div>
 
-        <h2>⏱️ Difficulté</h2>
+</div>
 
-        <div class="difficulties">
-          <button class="difficulty easy" onclick="selectDifficulty(15, this)">
-            🟢 Facile<br />15 s
-          </button>
+</section>
 
-          <button
-            class="difficulty medium selected"
-            onclick="selectDifficulty(10, this)"
-          >
-            🟠 Moyen<br />10 s
-          </button>
 
-          <button class="difficulty hard" onclick="selectDifficulty(5, this)">
-            🔴 Difficile<br />5 s
-          </button>
-        </div>
-
-        <button class="start" onclick="startGame()">🚀 COMMENCER</button>
-
-        <button class="secondary" onclick="showProgress()">
-          📈 Voir ma progression
-        </button>
-
-        <button class="secondary" onclick="showErrors()">
-          ❌ Voir mes erreurs
-        </button>
-      </section>
-
-      <!-- =====================================================
+<!-- =====================================================
      JEU
 ===================================================== -->
 
-      <section id="game" class="card hidden">
-        <div class="info">
-          <span id="questionNumber"> Question 1/10 </span>
+<section id="game" class="card hidden">
 
-          <span id="score"> Score : 0 </span>
-        </div>
+<div class="info">
 
-        <div class="timer">⏱️ <span id="time">10</span> s</div>
+<span id="questionNumber">
+    Question 1/10
+</span>
 
-        <div class="timer-bar">
-          <div id="timerProgress" class="timer-progress"></div>
-        </div>
+<span id="score">
+    Score : 0
+</span>
 
-        <div id="question" class="question">7 × 8 = ?</div>
+</div>
 
-        <div id="answers" class="answers">
-          <button class="answer"></button>
-          <button class="answer"></button>
-          <button class="answer"></button>
-          <button class="answer"></button>
-        </div>
+<div class="timer">
+    ⏱️ <span id="time">10</span> s
+</div>
 
-        <div id="message" class="message"></div>
+<div class="timer-bar">
 
-        <button id="nextBtn" class="next" onclick="nextQuestion()">
-          ➡️ QUESTION SUIVANTE
-        </button>
+<div id="timerProgress"
+     class="timer-progress">
+</div>
 
-        <button class="home-btn" onclick="goHome()">🏠 ACCUEIL</button>
-      </section>
+</div>
 
-      <!-- =====================================================
+<div id="question"
+     class="question">
+    7 × 8 = ?
+</div>
+
+<div id="answers"
+     class="answers">
+
+<button class="answer"></button>
+<button class="answer"></button>
+<button class="answer"></button>
+<button class="answer"></button>
+
+</div>
+
+<div id="message"
+     class="message">
+</div>
+
+<button id="nextBtn"
+        class="next"
+        onclick="nextQuestion()">
+
+    ➡️ QUESTION SUIVANTE
+
+</button>
+
+<button class="home-btn"
+        onclick="goHome()">
+
+    🏠 ACCUEIL
+
+</button>
+
+</section>
+
+
+<!-- =====================================================
      RESULTAT
 ===================================================== -->
 
-      <section id="result" class="card hidden">
-        <h1>🏆 Résultat</h1>
+<section id="result"
+         class="card hidden">
 
-        <div class="result">
-          <div id="finalScore" class="big-score"></div>
+<h1>🏆 Résultat</h1>
 
-          <div id="finalCorrect" class="stat"></div>
+<div class="result">
 
-          <div id="finalWrong" class="stat"></div>
-        </div>
+<div id="finalScore"
+     class="big-score">
+</div>
 
-        <button class="start" onclick="startGame()">🔄 REJOUER</button>
+<div id="resultMessage"
+     class="result-message">
+</div>
 
-        <button class="secondary" onclick="showProgress()">
-          📈 Voir ma progression
-        </button>
+<div id="finalCorrect"
+     class="stat">
+</div>
 
-        <button class="home-btn" onclick="goHome()">🏠 ACCUEIL</button>
-      </section>
+<div id="finalWrong"
+     class="stat">
+</div>
 
-      <!-- =====================================================
+<div id="xpEarned"
+     class="xp-earned">
+</div>
+
+<div id="levelUp"
+     class="result-message">
+</div>
+
+</div>
+
+<button class="start"
+        onclick="startGame()">
+
+    🔄 REJOUER
+
+</button>
+
+<button class="learn-btn"
+        onclick="startLearning()">
+
+    📚 APPRENDRE LA TABLE
+
+</button>
+
+<button class="secondary"
+        onclick="showProgress()">
+
+    📈 Voir ma progression
+
+</button>
+
+<button class="home-btn"
+        onclick="goHome()">
+
+    🏠 ACCUEIL
+
+</button>
+
+</section>
+
+
+<!-- =====================================================
      PROGRESSION
 ===================================================== -->
 
-      <section id="progress" class="card hidden">
-        <h1>📈 Ma progression</h1>
+<section id="progress"
+         class="card hidden">
 
-        <p style="text-align: center">
-          Nombre de calculs maîtrisés dans chaque table
-        </p>
+<h1>📈 Ma progression</h1>
 
-        <div id="progressContent"></div>
+<p style="text-align:center">
+    Calculs maîtrisés
+</p>
 
-        <button class="home-btn" onclick="goHome()">🏠 ACCUEIL</button>
-      </section>
+<div class="global-progress">
 
-      <!-- =====================================================
+<div class="progress-title">
+
+<span>Progression globale</span>
+
+<span id="globalProgressText">
+0 / 90
+</span>
+
+</div>
+
+<div class="global-progress-bar">
+
+<div id="globalProgressFill"
+     class="global-progress-fill">
+</div>
+
+</div>
+
+</div>
+
+<div id="progressContent">
+</div>
+
+<h2>🏅 Mes badges</h2>
+
+<div id="badgesContent"
+     class="badges">
+</div>
+
+<button class="home-btn"
+        onclick="goHome()">
+
+    🏠 ACCUEIL
+
+</button>
+
+</section>
+
+
+<!-- =====================================================
      ERREURS
 ===================================================== -->
 
-      <section id="errors" class="card hidden">
-        <h1>❌ Mes erreurs</h1>
+<section id="errors"
+         class="card hidden">
 
-        <div id="errorsContent"></div>
+<h1>❌ Mes erreurs</h1>
 
-        <button id="reviewBtn" class="start" onclick="startReview()">
-          🧠 RÉVISER MES ERREURS
-        </button>
+<div id="errorsContent">
+</div>
 
-        <button class="home-btn" onclick="goHome()">🏠 ACCUEIL</button>
-      </section>
-    </div>
+<button id="reviewBtn"
+        class="start"
+        onclick="startReview()">
 
-    <script>
-      /* =====================================================
+    🧠 RÉVISER MES ERREURS
+
+</button>
+
+<button class="home-btn"
+        onclick="goHome()">
+
+    🏠 ACCUEIL
+
+</button>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* =====================================================
    VARIABLES
 ===================================================== */
 
-      let selectedTable = null;
+let selectedTable = null;
 
-      let difficultyTime = 10;
+let difficultyTime = 10;
 
-      let questionNumber = 0;
+let questionNumber = 0;
 
-      let score = 0;
+let totalQuestions = 10;
 
-      let correctCount = 0;
+let score = 0;
 
-      let wrongCount = 0;
+let correctCount = 0;
 
-      let correctAnswer = 0;
+let wrongCount = 0;
 
-      let currentNumber = 0;
+let correctAnswer = 0;
 
-      let timer;
+let currentNumber = 0;
 
-      let timeLeft;
+let timer;
 
-      let questionAnswered = false;
+let timeLeft;
 
-      let reviewMode = false;
+let questionAnswered = false;
 
-      let reviewQuestions = [];
+let reviewMode = false;
 
-      let reviewIndex = 0;
+let learningMode = false;
 
-      /* =====================================================
+let reviewQuestions = [];
+
+let reviewIndex = 0;
+
+
+/* =====================================================
    DONNEES SAUVEGARDEES
 ===================================================== */
 
-      let mistakes =
-        JSON.parse(localStorage.getItem("multiplicationMistakes")) || [];
+let mistakes =
+JSON.parse(
+    localStorage.getItem("multiplicationMistakes")
+) || [];
 
-      let mastery = JSON.parse(
-        localStorage.getItem("multiplicationMastery"),
-      ) || {
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: [],
-        6: [],
-        7: [],
-        8: [],
-        9: [],
-      };
 
-      /* =====================================================
+let mastery =
+JSON.parse(
+    localStorage.getItem("multiplicationMastery")
+) || {
+    1:[],2:[],3:[],
+    4:[],5:[],6:[],
+    7:[],8:[],9:[]
+};
+
+
+/* =====================================================
+   XP / NIVEAU
+===================================================== */
+
+let xp =
+Number(
+    localStorage.getItem("multiplicationXP")
+) || 0;
+
+
+let level =
+Number(
+    localStorage.getItem("multiplicationLevel")
+) || 1;
+
+
+/* =====================================================
+   SERIE
+===================================================== */
+
+let streak =
+Number(
+    localStorage.getItem("multiplicationStreak")
+) || 0;
+
+
+let bestStreak =
+Number(
+    localStorage.getItem("multiplicationBestStreak")
+) || 0;
+
+
+/* =====================================================
+   BADGES
+===================================================== */
+
+let badges =
+JSON.parse(
+    localStorage.getItem("multiplicationBadges")
+) || [];
+
+
+/* =====================================================
    SELECTION TABLE
 ===================================================== */
 
-      function selectTable(table) {
-        selectedTable = table;
+function selectTable(table) {
 
-        document
-          .querySelectorAll(".table-btn")
-          .forEach((btn) => btn.classList.remove("selected"));
+    selectedTable = table;
 
-        document
-          .querySelectorAll(".table-btn")
-          [table - 1].classList.add("selected");
+    document
+        .querySelectorAll(".table-btn")
+        .forEach(btn =>
+            btn.classList.remove("selected")
+        );
 
-        updateSelectedInfo();
-      }
+    document
+        .querySelectorAll(".table-btn")
+        [table - 1]
+        .classList.add("selected");
 
-      function updateSelectedInfo() {
-        if (!selectedTable) {
-          document.getElementById("selectedInfo").textContent =
-            "Choisis une table";
+    updateSelectedInfo();
+}
 
-          return;
-        }
 
-        document.getElementById("selectedInfo").textContent =
-          "✅ Table de " + selectedTable;
-      }
+function updateSelectedInfo() {
 
-      /* =====================================================
+    if (!selectedTable) {
+
+        document.getElementById(
+            "selectedInfo"
+        ).textContent =
+        "Choisis une table";
+
+        return;
+    }
+
+    let count =
+        mastery[selectedTable]
+        ? mastery[selectedTable].length
+        : 0;
+
+    document.getElementById(
+        "selectedInfo"
+    ).textContent =
+    "✅ Table de " +
+    selectedTable +
+    " — " +
+    count +
+    "/10 maîtrisés";
+}
+
+
+/* =====================================================
    DIFFICULTE
 ===================================================== */
 
-      function selectDifficulty(time, button) {
-        difficultyTime = time;
+function selectDifficulty(time,button) {
 
-        document
-          .querySelectorAll(".difficulty")
-          .forEach((btn) => btn.classList.remove("selected"));
+    difficultyTime = time;
 
-        button.classList.add("selected");
-      }
+    document
+        .querySelectorAll(".difficulty")
+        .forEach(btn =>
+            btn.classList.remove("selected")
+        );
 
-      /* =====================================================
-   DEMARRER
+    button.classList.add("selected");
+}
+
+
+/* =====================================================
+   DEMARRER ENTRAINEMENT
 ===================================================== */
 
-      function startGame() {
-        if (!selectedTable) {
-          alert("⚠️ Choisis d'abord une table.");
+function startGame() {
 
-          return;
-        }
+    if (!selectedTable) {
 
-        reviewMode = false;
+        alert(
+            "⚠️ Choisis d'abord une table."
+        );
 
-        questionNumber = 0;
+        return;
+    }
 
-        score = 0;
+    reviewMode = false;
 
-        correctCount = 0;
+    learningMode = false;
 
-        wrongCount = 0;
+    totalQuestions = 10;
 
-        showOnly("game");
+    questionNumber = 0;
 
-        nextQuestion();
-      }
+    score = 0;
 
-      /* =====================================================
-   QUESTION SUIVANTE
+    correctCount = 0;
+
+    wrongCount = 0;
+
+    showOnly("game");
+
+    nextQuestion();
+}
+
+
+/* =====================================================
+   APPRENDRE LA TABLE
 ===================================================== */
 
-      function nextQuestion() {
-        clearInterval(timer);
+function startLearning() {
 
-        if (reviewMode) {
-          nextReviewQuestion();
+    if (!selectedTable) {
 
-          return;
-        }
+        alert(
+            "⚠️ Choisis d'abord une table."
+        );
 
-        if (questionNumber >= 10) {
-          showResult();
+        return;
+    }
 
-          return;
-        }
+    reviewMode = false;
 
-        questionNumber++;
+    learningMode = true;
 
-        questionAnswered = false;
+    totalQuestions = 10;
 
-        document.getElementById("questionNumber").textContent =
-          "Question " + questionNumber + "/10";
+    questionNumber = 0;
 
-        document.getElementById("score").textContent = "Score : " + score;
+    score = 0;
 
-        document.getElementById("message").textContent = "";
+    correctCount = 0;
 
-        document.getElementById("nextBtn").style.display = "none";
+    wrongCount = 0;
 
-        createQuestion();
+    showOnly("game");
 
-        startTimer();
-      }
+    nextLearningQuestion();
+}
 
-      /* =====================================================
-   CREER QUESTION
+
+/* =====================================================
+   QUESTION ENTRAINEMENT
 ===================================================== */
 
-      function createQuestion() {
-        currentNumber = Math.floor(Math.random() * 10) + 1;
+function nextQuestion() {
 
-        correctAnswer = selectedTable * currentNumber;
+    clearInterval(timer);
 
-        document.getElementById("question").textContent =
-          selectedTable + " × " + currentNumber + " = ?";
+    if (reviewMode) {
 
-        let answers = [correctAnswer];
+        nextReviewQuestion();
 
-        while (answers.length < 4) {
-          let wrongAnswer = correctAnswer + Math.floor(Math.random() * 15) - 7;
+        return;
+    }
 
-          if (wrongAnswer > 0 && !answers.includes(wrongAnswer)) {
+    if (learningMode) {
+
+        nextLearningQuestion();
+
+        return;
+    }
+
+    if (questionNumber >= totalQuestions) {
+
+        showResult();
+
+        return;
+    }
+
+    questionNumber++;
+
+    questionAnswered = false;
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+    "Question " +
+    questionNumber +
+    "/" +
+    totalQuestions;
+
+    document.getElementById(
+        "score"
+    ).textContent =
+    "Score : " + score;
+
+    document.getElementById(
+        "message"
+    ).textContent = "";
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display = "none";
+
+    createRandomQuestion();
+
+    startTimer();
+}
+
+
+/* =====================================================
+   QUESTION APPRENTISSAGE
+===================================================== */
+
+function nextLearningQuestion() {
+
+    clearInterval(timer);
+
+    if (questionNumber >= 10) {
+
+        showResult();
+
+        return;
+    }
+
+    questionNumber++;
+
+    currentNumber = questionNumber;
+
+    correctAnswer =
+        selectedTable * currentNumber;
+
+    questionAnswered = false;
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+    "Apprentissage " +
+    questionNumber +
+    "/10";
+
+    document.getElementById(
+        "score"
+    ).textContent =
+    "Score : " + score;
+
+    document.getElementById(
+        "message"
+    ).textContent =
+    "📚 Apprends bien ce calcul !";
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display = "none";
+
+    createAnswerButtons();
+
+    startTimer();
+}
+
+
+/* =====================================================
+   QUESTION ALEATOIRE
+===================================================== */
+
+function createRandomQuestion() {
+
+    currentNumber =
+        Math.floor(Math.random() * 10) + 1;
+
+    correctAnswer =
+        selectedTable * currentNumber;
+
+    document.getElementById(
+        "question"
+    ).textContent =
+    selectedTable +
+    " × " +
+    currentNumber +
+    " = ?";
+
+    createAnswerButtons();
+}
+
+
+/* =====================================================
+   REPONSES
+===================================================== */
+
+function createAnswerButtons() {
+
+    document.getElementById(
+        "question"
+    ).textContent =
+    selectedTable +
+    " × " +
+    currentNumber +
+    " = ?";
+
+    let answers =
+        [correctAnswer];
+
+    while (answers.length < 4) {
+
+        let wrongAnswer =
+            correctAnswer +
+            Math.floor(Math.random() * 15) -
+            7;
+
+        if (
+            wrongAnswer > 0 &&
+            !answers.includes(wrongAnswer)
+        ) {
+
             answers.push(wrongAnswer);
-          }
         }
+    }
 
-        answers.sort(() => Math.random() - 0.5);
+    answers.sort(
+        () => Math.random() - .5
+    );
 
-        let buttons = document.querySelectorAll(".answer");
+    document
+        .querySelectorAll(".answer")
+        .forEach((button,index) => {
 
-        buttons.forEach((button, index) => {
-          button.textContent = answers[index];
+            button.textContent =
+                answers[index];
 
-          button.disabled = false;
+            button.disabled = false;
 
-          button.classList.remove("correct");
-          button.classList.remove("wrong");
+            button.classList.remove(
+                "correct",
+                "wrong"
+            );
 
-          button.onclick = () => checkAnswer(answers[index], button);
+            button.onclick = () =>
+                checkAnswer(
+                    answers[index],
+                    button
+                );
         });
-      }
+}
 
-      /* =====================================================
+
+/* =====================================================
    TIMER
 ===================================================== */
 
-      function startTimer() {
-        timeLeft = difficultyTime;
+function startTimer() {
 
-        let startTime = Date.now();
+    timeLeft = difficultyTime;
 
-        document.getElementById("time").textContent = Math.ceil(timeLeft);
+    let startTime = Date.now();
 
-        document.getElementById("timerProgress").style.width = "100%";
+    document.getElementById(
+        "time"
+    ).textContent =
+    Math.ceil(timeLeft);
 
-        timer = setInterval(() => {
-          let elapsed = (Date.now() - startTime) / 1000;
+    document.getElementById(
+        "timerProgress"
+    ).style.width =
+    "100%";
 
-          timeLeft = Math.max(0, difficultyTime - elapsed);
+    timer =
+    setInterval(() => {
 
-          document.getElementById("time").textContent = Math.ceil(timeLeft);
+        let elapsed =
+            (Date.now() - startTime) / 1000;
 
-          document.getElementById("timerProgress").style.width =
-            (timeLeft / difficultyTime) * 100 + "%";
+        timeLeft =
+            Math.max(
+                0,
+                difficultyTime - elapsed
+            );
 
-          if (timeLeft <= 0) {
+        document.getElementById(
+            "time"
+        ).textContent =
+        Math.ceil(timeLeft);
+
+        document.getElementById(
+            "timerProgress"
+        ).style.width =
+        (timeLeft / difficultyTime) *
+        100 +
+        "%";
+
+        if (timeLeft <= 0) {
+
             clearInterval(timer);
 
             timeExpired();
-          }
-        }, 50);
-      }
+        }
 
-      /* =====================================================
+    },50);
+}
+
+
+/* =====================================================
    REPONSE
 ===================================================== */
 
-      function checkAnswer(answer, button) {
-        if (questionAnswered) return;
+function checkAnswer(answer,button) {
 
-        questionAnswered = true;
+    if (questionAnswered) return;
 
-        clearInterval(timer);
+    questionAnswered = true;
 
-        disableAnswers();
+    clearInterval(timer);
 
-        if (answer === correctAnswer) {
-          score++;
+    disableAnswers();
 
-          correctCount++;
+    if (answer === correctAnswer) {
 
-          button.classList.add("correct");
+        score++;
 
-          document.getElementById("message").textContent = "✅ Bonne réponse !";
+        correctCount++;
 
-          registerMastery(selectedTable, currentNumber);
-        } else {
-          wrongCount++;
+        streak++;
 
-          button.classList.add("wrong");
+        updateBestStreak();
 
-          document.getElementById("message").textContent =
-            "❌ Faux ! La bonne réponse est " + correctAnswer;
+        button.classList.add("correct");
 
-          saveMistake(selectedTable, currentNumber, correctAnswer, answer);
-        }
+        document.getElementById(
+            "message"
+        ).textContent =
+        "✅ Bonne réponse !";
 
-        document.getElementById("score").textContent = "Score : " + score;
+        registerMastery(
+            selectedTable,
+            currentNumber
+        );
 
-        document.getElementById("nextBtn").style.display = "block";
-      }
+        addXP(10);
 
-      /* =====================================================
-   TEMPS ECOULE
-===================================================== */
+        checkBadges();
 
-      function timeExpired() {
-        if (questionAnswered) return;
+        document
+            .getElementById("game")
+            .classList.add(
+                "success-animation"
+            );
 
-        questionAnswered = true;
+        setTimeout(() => {
 
-        disableAnswers();
+            document
+                .getElementById("game")
+                .classList.remove(
+                    "success-animation"
+                );
+
+        },500);
+
+    } else {
 
         wrongCount++;
 
-        document.getElementById("message").textContent =
-          "⏰ Temps écoulé ! LOLOooooooo" +
-          selectedTable +
-          " × " +
-          currentNumber +
-          " = " +
-          correctAnswer;
+        streak = 0;
+
+        button.classList.add("wrong");
+
+        document.getElementById(
+            "message"
+        ).textContent =
+        "❌ Faux ! La bonne réponse est " +
+        correctAnswer;
 
         saveMistake(
-          selectedTable,
-          currentNumber,
-          correctAnswer,
-          "Temps écoulé",
+            selectedTable,
+            currentNumber,
+            correctAnswer,
+            answer
         );
+    }
 
-        document.getElementById("nextBtn").style.display = "block";
-      }
+    document.getElementById(
+        "score"
+    ).textContent =
+    "Score : " + score;
 
-      /* =====================================================
+    document.getElementById(
+        "nextBtn"
+    ).style.display =
+    "block";
+
+    saveAll();
+}
+
+
+/* =====================================================
+   TEMPS ECOULE
+===================================================== */
+
+function timeExpired() {
+
+    if (questionAnswered) return;
+
+    questionAnswered = true;
+
+    disableAnswers();
+
+    wrongCount++;
+
+    streak = 0;
+
+    document.getElementById(
+        "message"
+    ).textContent =
+    "⏰ Temps écoulé ! La bonne réponse est " +
+    correctAnswer;
+
+    saveMistake(
+        selectedTable,
+        currentNumber,
+        correctAnswer,
+        "Temps écoulé"
+    );
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display =
+    "block";
+
+    saveAll();
+}
+
+
+/* =====================================================
    DESACTIVER REPONSES
 ===================================================== */
 
-      function disableAnswers() {
-        document.querySelectorAll(".answer").forEach((button) => {
-          button.disabled = true;
+function disableAnswers() {
 
-          if (Number(button.textContent) === correctAnswer) {
-            button.classList.add("correct");
-          }
+    document
+        .querySelectorAll(".answer")
+        .forEach(button => {
+
+            button.disabled = true;
+
+            if (
+                Number(button.textContent) ===
+                correctAnswer
+            ) {
+
+                button.classList.add(
+                    "correct"
+                );
+            }
         });
-      }
+}
 
-      /* =====================================================
-   SAUVEGARDER ERREUR
+
+/* =====================================================
+   ERREUR
 ===================================================== */
 
-      function saveMistake(table, number, answer, lastAnswer) {
-        let existing = mistakes.find(
-          (item) => item.table === table && item.number === number,
+function saveMistake(
+    table,
+    number,
+    answer,
+    lastAnswer
+) {
+
+    let existing =
+        mistakes.find(
+            item =>
+                item.table === table &&
+                item.number === number
         );
 
-        if (existing) {
-          existing.errors++;
+    if (existing) {
 
-          existing.lastAnswer = lastAnswer;
-        } else {
-          mistakes.push({
+        existing.errors++;
+
+        existing.lastAnswer =
+            lastAnswer;
+
+    } else {
+
+        mistakes.push({
+
             table: table,
 
             number: number,
@@ -804,320 +1539,994 @@
 
             lastAnswer: lastAnswer,
 
-            errors: 1,
-          });
-        }
+            errors: 1
 
-        localStorage.setItem(
-          "multiplicationMistakes",
-          JSON.stringify(mistakes),
-        );
-      }
+        });
+    }
 
-      /* =====================================================
+    localStorage.setItem(
+        "multiplicationMistakes",
+        JSON.stringify(mistakes)
+    );
+}
+
+
+/* =====================================================
    MAITRISE
 ===================================================== */
 
-      function registerMastery(table, number) {
-        if (!mastery[table]) mastery[table] = [];
+function registerMastery(
+    table,
+    number
+) {
 
-        if (!mastery[table].includes(number)) {
-          mastery[table].push(number);
+    if (!mastery[table])
+        mastery[table] = [];
 
-          mastery[table].sort((a, b) => a - b);
+    if (
+        !mastery[table]
+            .includes(number)
+    ) {
 
-          localStorage.setItem(
+        mastery[table].push(number);
+
+        mastery[table].sort(
+            (a,b) => a-b
+        );
+
+        localStorage.setItem(
             "multiplicationMastery",
-            JSON.stringify(mastery),
-          );
-        }
-      }
+            JSON.stringify(mastery)
+        );
+    }
+}
 
-      /* =====================================================
+
+/* =====================================================
+   XP
+===================================================== */
+
+function addXP(amount) {
+
+    xp += amount;
+
+    let oldLevel = level;
+
+    while (
+        xp >= level * 100
+    ) {
+
+        xp -= level * 100;
+
+        level++;
+    }
+
+    localStorage.setItem(
+        "multiplicationXP",
+        xp
+    );
+
+    localStorage.setItem(
+        "multiplicationLevel",
+        level
+    );
+
+    if (level > oldLevel) {
+
+        sessionStorage.setItem(
+            "levelUp",
+            "true"
+        );
+    }
+}
+
+
+/* =====================================================
+   SERIE
+===================================================== */
+
+function updateBestStreak() {
+
+    if (streak > bestStreak) {
+
+        bestStreak = streak;
+
+        localStorage.setItem(
+            "multiplicationBestStreak",
+            bestStreak
+        );
+    }
+}
+
+
+/* =====================================================
+   BADGES
+===================================================== */
+
+function checkBadges() {
+
+    let totalMastery =
+        getTotalMastery();
+
+    if (
+        totalMastery >= 10 &&
+        !badges.includes("first10")
+    ) {
+
+        badges.push("first10");
+    }
+
+    if (
+        totalMastery >= 30 &&
+        !badges.includes("30")
+    ) {
+
+        badges.push("30");
+    }
+
+    if (
+        totalMastery >= 60 &&
+        !badges.includes("60")
+    ) {
+
+        badges.push("60");
+    }
+
+    if (
+        totalMastery >= 90 &&
+        !badges.includes("master")
+    ) {
+
+        badges.push("master");
+    }
+
+    for (
+        let table = 2;
+        table <= 9;
+        table++
+    ) {
+
+        if (
+            mastery[table] &&
+            mastery[table].length === 10 &&
+            !badges.includes(
+                "table" + table
+            )
+        ) {
+
+            badges.push(
+                "table" + table
+            );
+        }
+    }
+
+    localStorage.setItem(
+        "multiplicationBadges",
+        JSON.stringify(badges)
+    );
+}
+
+
+/* =====================================================
+   TOTAL MAITRISE
+===================================================== */
+
+function getTotalMastery() {
+
+    let total = 0;
+
+    for (
+        let table = 1;
+        table <= 9;
+        table++
+    ) {
+
+        total +=
+            mastery[table]
+            ? mastery[table].length
+            : 0;
+    }
+
+    return total;
+}
+
+
+/* =====================================================
    RESULTAT
 ===================================================== */
 
-      function showResult() {
-        clearInterval(timer);
+function showResult() {
 
-        showOnly("result");
+    clearInterval(timer);
 
-        document.getElementById("finalScore").textContent = score + " / 10";
+    showOnly("result");
 
-        document.getElementById("finalCorrect").textContent =
-          "✅ Bravo LOQMAN  " + correctCount;
+    document.getElementById(
+        "finalScore"
+    ).textContent =
+    score + " / " + totalQuestions;
 
-        document.getElementById("finalWrong").textContent =
-          "❌ Erreurs : " + wrongCount;
-      }
+    let message;
 
-      /* =====================================================
+    if (score === totalQuestions) {
+
+        message =
+        "🌟 EXCELLENT ! Toutes les réponses sont correctes !";
+
+    } else if (
+        score >= totalQuestions * .8
+    ) {
+
+        message =
+        "👏 Très bien ! Continue comme ça !";
+
+    } else if (
+        score >= totalQuestions * .5
+    ) {
+
+        message =
+        "💪 Bon travail ! Encore un petit effort !";
+
+    } else {
+
+        message =
+        "📚 Continue à t'entraîner ! Tu vas progresser !";
+    }
+
+    document.getElementById(
+        "resultMessage"
+    ).textContent =
+    message;
+
+    document.getElementById(
+        "finalCorrect"
+    ).textContent =
+    "✅ Bonnes réponses : " +
+    correctCount;
+
+    document.getElementById(
+        "finalWrong"
+    ).textContent =
+    "❌ Erreurs : " +
+    wrongCount;
+
+    let earned =
+        correctCount * 10;
+
+    document.getElementById(
+        "xpEarned"
+    ).textContent =
+    "⭐ XP gagnés : +" +
+    earned;
+
+    let levelUp =
+        sessionStorage.getItem(
+            "levelUp"
+        );
+
+    if (levelUp === "true") {
+
+        document.getElementById(
+            "levelUp"
+        ).textContent =
+        "🎉 NIVEAU SUPÉRIEUR ! Niveau " +
+        level;
+
+        sessionStorage.removeItem(
+            "levelUp"
+        );
+
+    } else {
+
+        document.getElementById(
+            "levelUp"
+        ).textContent =
+        "⭐ Niveau actuel : " +
+        level;
+    }
+
+    checkBadges();
+
+    saveAll();
+
+    updateDashboard();
+}
+
+
+/* =====================================================
    PROGRESSION
 ===================================================== */
 
-      function showProgress() {
-        showOnly("progress");
+function showProgress() {
 
-        let html = "";
+    showOnly("progress");
 
-        for (let table = 1; table <= 9; table++) {
-          let count = mastery[table] ? mastery[table].length : 0;
+    let total =
+        getTotalMastery();
 
-          let percent = count * 10;
+    let percent =
+        Math.round(
+            total / 90 * 100
+        );
 
-          html += `
+    document.getElementById(
+        "globalProgressText"
+    ).textContent =
+    total + " / 90";
 
-            <div class="progress-table">
+    document.getElementById(
+        "globalProgressFill"
+    ).style.width =
+    percent + "%";
 
-                <div class="progress-title">
+    let html = "";
 
-                    <span>Table de ${table}</span>
+    for (
+        let table = 1;
+        table <= 9;
+        table++
+    ) {
 
-                    <span>${count}/10</span>
+        let count =
+            mastery[table]
+            ? mastery[table].length
+            : 0;
 
-                </div>
+        let percent =
+            count * 10;
 
-                <div class="progress-bar">
+        html += `
 
-                    <div
-                        class="progress-fill"
-                        style="width:${percent}%">
-                    </div>
+        <div class="progress-table">
 
-                </div>
+            <div class="progress-title">
 
-            </div>
-        `;
-        }
+                <span>
+                    Table de ${table}
+                </span>
 
-        document.getElementById("progressContent").innerHTML = html;
-      }
-
-      /* =====================================================
-   ERREURS
-===================================================== */
-
-      function showErrors() {
-        showOnly("errors");
-
-        let content = document.getElementById("errorsContent");
-
-        if (mistakes.length === 0) {
-          content.innerHTML = `
-
-            <p style="text-align:center;">
-                🎉 Aucune erreur enregistrée !
-            </p>
-
-        `;
-
-          document.getElementById("reviewBtn").style.display = "none";
-
-          return;
-        }
-
-        document.getElementById("reviewBtn").style.display = "block";
-
-        let sorted = [...mistakes].sort((a, b) => b.errors - a.errors);
-
-        content.innerHTML = sorted
-          .map(
-            (item) => `
-
-            <div class="error-item">
-
-                <strong>
-                    ${item.table} × ${item.number}
-                    = ${item.answer}
-                </strong>
-
-                <br>
-
-                Ta dernière réponse :
-                <b>${item.lastAnswer}</b>
-
-                <br>
-
-                <span class="error-count">
-                    ❌ ${item.errors} erreur(s)
+                <span>
+                    ${count}/10
                 </span>
 
             </div>
 
-        `,
-          )
-          .join("");
-      }
+            <div class="progress-bar">
 
-      /* =====================================================
-   REVISION DES ERREURS
+                <div
+                    class="progress-fill"
+                    style="width:${percent}%">
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+    }
+
+    document.getElementById(
+        "progressContent"
+    ).innerHTML =
+    html;
+
+    displayBadges();
+}
+
+
+/* =====================================================
+   BADGES
 ===================================================== */
 
-      function startReview() {
-        if (mistakes.length === 0) return;
+function displayBadges() {
 
-        reviewQuestions = [...mistakes].sort(() => Math.random() - 0.5);
+    let badgeList = [
 
-        reviewIndex = 0;
+        {
+            id:"first10",
+            icon:"🌱",
+            name:"10 calculs"
+        },
 
-        reviewMode = true;
+        {
+            id:"30",
+            icon:"🥉",
+            name:"30 calculs"
+        },
 
-        score = 0;
+        {
+            id:"60",
+            icon:"🥈",
+            name:"60 calculs"
+        },
 
-        correctCount = 0;
+        {
+            id:"master",
+            icon:"🏆",
+            name:"90 calculs"
+        },
 
-        wrongCount = 0;
+        {
+            id:"table2",
+            icon:"2️⃣",
+            name:"Table ×2"
+        },
 
-        showOnly("game");
+        {
+            id:"table3",
+            icon:"3️⃣",
+            name:"Table ×3"
+        },
 
-        nextReviewQuestion();
-      }
+        {
+            id:"table4",
+            icon:"4️⃣",
+            name:"Table ×4"
+        },
 
-      function nextReviewQuestion() {
-        clearInterval(timer);
+        {
+            id:"table5",
+            icon:"5️⃣",
+            name:"Table ×5"
+        },
 
-        if (reviewIndex >= reviewQuestions.length) {
-          showResult();
+        {
+            id:"table6",
+            icon:"6️⃣",
+            name:"Table ×6"
+        },
 
-          return;
+        {
+            id:"table7",
+            icon:"7️⃣",
+            name:"Table ×7"
+        },
+
+        {
+            id:"table8",
+            icon:"8️⃣",
+            name:"Table ×8"
+        },
+
+        {
+            id:"table9",
+            icon:"9️⃣",
+            name:"Table ×9"
         }
 
-        questionAnswered = false;
+    ];
 
-        let item = reviewQuestions[reviewIndex];
+    document.getElementById(
+        "badgesContent"
+    ).innerHTML =
 
-        selectedTable = item.table;
+    badgeList.map(
+        badge => `
 
-        currentNumber = item.number;
+        <div class="badge
+            ${badges.includes(badge.id)
+                ? ""
+                : "locked"}">
 
-        correctAnswer = item.answer;
+            <div class="badge-icon">
+                ${badge.icon}
+            </div>
 
-        document.getElementById("questionNumber").textContent =
-          "Révision " + (reviewIndex + 1) + "/" + reviewQuestions.length;
+            ${badge.name}
 
-        document.getElementById("score").textContent = "Score : " + score;
+        </div>
 
-        document.getElementById("message").textContent = "";
+        `
+    ).join("");
+}
 
-        document.getElementById("nextBtn").style.display = "none";
 
-        document.getElementById("question").textContent =
-          selectedTable + " × " + currentNumber + " = ?";
+/* =====================================================
+   ERREURS
+===================================================== */
 
-        let answers = [correctAnswer];
+function showErrors() {
 
-        while (answers.length < 4) {
-          let value = correctAnswer + Math.floor(Math.random() * 15) - 7;
+    showOnly("errors");
 
-          if (value > 0 && !answers.includes(value)) {
-            answers.push(value);
-          }
-        }
+    let content =
+        document.getElementById(
+            "errorsContent"
+        );
 
-        answers.sort(() => Math.random() - 0.5);
+    if (mistakes.length === 0) {
 
-        document.querySelectorAll(".answer").forEach((button, index) => {
-          button.textContent = answers[index];
+        content.innerHTML = `
 
-          button.disabled = false;
+        <p style="text-align:center">
+            🎉 Aucune erreur enregistrée !
+        </p>
 
-          button.classList.remove("correct");
-          button.classList.remove("wrong");
+        `;
 
-          button.onclick = () => checkReviewAnswer(answers[index], button);
+        document.getElementById(
+            "reviewBtn"
+        ).style.display =
+        "none";
+
+        return;
+    }
+
+    document.getElementById(
+        "reviewBtn"
+    ).style.display =
+    "block";
+
+    let sorted =
+        [...mistakes].sort(
+            (a,b) =>
+                b.errors - a.errors
+        );
+
+    content.innerHTML =
+    sorted.map(
+        item => `
+
+        <div class="error-item">
+
+            <strong>
+                ${item.table} ×
+                ${item.number}
+                = ${item.answer}
+            </strong>
+
+            <br>
+
+            Ta dernière réponse :
+            <b>${item.lastAnswer}</b>
+
+            <br>
+
+            <span class="error-count">
+                ❌ ${item.errors}
+                erreur(s)
+            </span>
+
+        </div>
+
+        `
+    ).join("");
+}
+
+
+/* =====================================================
+   REVISION
+===================================================== */
+
+function startReview() {
+
+    if (
+        mistakes.length === 0
+    ) return;
+
+    reviewQuestions =
+        [...mistakes].sort(
+            () => Math.random() - .5
+        );
+
+    reviewIndex = 0;
+
+    reviewMode = true;
+
+    learningMode = false;
+
+    score = 0;
+
+    correctCount = 0;
+
+    wrongCount = 0;
+
+    showOnly("game");
+
+    nextReviewQuestion();
+}
+
+
+function nextReviewQuestion() {
+
+    clearInterval(timer);
+
+    if (
+        reviewIndex >=
+        reviewQuestions.length
+    ) {
+
+        showResult();
+
+        return;
+    }
+
+    questionAnswered = false;
+
+    let item =
+        reviewQuestions[reviewIndex];
+
+    selectedTable =
+        item.table;
+
+    currentNumber =
+        item.number;
+
+    correctAnswer =
+        item.answer;
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+    "Révision " +
+    (reviewIndex + 1) +
+    "/" +
+    reviewQuestions.length;
+
+    document.getElementById(
+        "score"
+    ).textContent =
+    "Score : " + score;
+
+    document.getElementById(
+        "message"
+    ).textContent = "";
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display =
+    "none";
+
+    createAnswerButtons();
+
+    document
+        .querySelectorAll(".answer")
+        .forEach(button => {
+
+            let oldClick =
+                button.onclick;
+
+            button.onclick =
+                null;
         });
 
-        startTimer();
-      }
+    let answers =
+        [correctAnswer];
 
-      function checkReviewAnswer(answer, button) {
-        if (questionAnswered) return;
+    while (
+        answers.length < 4
+    ) {
 
-        questionAnswered = true;
+        let value =
+            correctAnswer +
+            Math.floor(
+                Math.random() * 15
+            ) - 7;
 
-        clearInterval(timer);
+        if (
+            value > 0 &&
+            !answers.includes(value)
+        ) {
 
-        disableAnswers();
-
-        if (answer === correctAnswer) {
-          score++;
-
-          correctCount++;
-
-          button.classList.add("correct");
-
-          document.getElementById("message").textContent = "✅ Correct !";
-
-          removeMistake(selectedTable, currentNumber);
-
-          registerMastery(selectedTable, currentNumber);
-        } else {
-          wrongCount++;
-
-          button.classList.add("wrong");
-
-          document.getElementById("message").textContent =
-            "❌ La bonne réponse est " + correctAnswer;
+            answers.push(value);
         }
+    }
 
-        document.getElementById("score").textContent = "Score : " + score;
+    answers.sort(
+        () => Math.random() - .5
+    );
 
-        document.getElementById("nextBtn").style.display = "block";
+    document
+        .querySelectorAll(".answer")
+        .forEach(
+            (button,index) => {
 
-        reviewIndex++;
-      }
+                button.textContent =
+                    answers[index];
 
-      function removeMistake(table, number) {
-        mistakes = mistakes.filter(
-          (item) => !(item.table === table && item.number === number),
+                button.disabled = false;
+
+                button.classList.remove(
+                    "correct",
+                    "wrong"
+                );
+
+                button.onclick =
+                    () =>
+                    checkReviewAnswer(
+                        answers[index],
+                        button
+                    );
+            }
         );
 
-        localStorage.setItem(
-          "multiplicationMistakes",
-          JSON.stringify(mistakes),
-        );
-      }
+    startTimer();
+}
 
-      /* =====================================================
+
+function checkReviewAnswer(
+    answer,
+    button
+) {
+
+    if (questionAnswered)
+        return;
+
+    questionAnswered = true;
+
+    clearInterval(timer);
+
+    disableAnswers();
+
+    if (
+        answer === correctAnswer
+    ) {
+
+        score++;
+
+        correctCount++;
+
+        streak++;
+
+        updateBestStreak();
+
+        button.classList.add(
+            "correct"
+        );
+
+        document.getElementById(
+            "message"
+        ).textContent =
+        "✅ Correct !";
+
+        removeMistake(
+            selectedTable,
+            currentNumber
+        );
+
+        registerMastery(
+            selectedTable,
+            currentNumber
+        );
+
+        addXP(10);
+
+    } else {
+
+        wrongCount++;
+
+        streak = 0;
+
+        button.classList.add(
+            "wrong"
+        );
+
+        document.getElementById(
+            "message"
+        ).textContent =
+        "❌ La bonne réponse est " +
+        correctAnswer;
+    }
+
+    document.getElementById(
+        "score"
+    ).textContent =
+    "Score : " + score;
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display =
+    "block";
+
+    reviewIndex++;
+
+    saveAll();
+}
+
+
+/* =====================================================
+   SUPPRIMER ERREUR
+===================================================== */
+
+function removeMistake(
+    table,
+    number
+) {
+
+    mistakes =
+        mistakes.filter(
+            item =>
+                !(
+                    item.table === table &&
+                    item.number === number
+                )
+        );
+
+    localStorage.setItem(
+        "multiplicationMistakes",
+        JSON.stringify(mistakes)
+    );
+}
+
+
+/* =====================================================
    NAVIGATION
 ===================================================== */
 
-      function showOnly(section) {
-        clearInterval(timer);
+function showOnly(section) {
 
-        const sections = ["home", "game", "result", "progress", "errors"];
+    clearInterval(timer);
 
-        sections.forEach((id) => {
-          document.getElementById(id).classList.add("hidden");
-        });
+    const sections = [
+        "home",
+        "game",
+        "result",
+        "progress",
+        "errors"
+    ];
 
-        document.getElementById(section).classList.remove("hidden");
-      }
+    sections.forEach(id => {
 
-      function goHome() {
-        reviewMode = false;
+        document
+            .getElementById(id)
+            .classList.add("hidden");
 
-        clearInterval(timer);
+    });
 
-        showOnly("home");
-      }
+    document
+        .getElementById(section)
+        .classList.remove("hidden");
 
-      /* =====================================================
+    if (section === "home") {
+
+        updateDashboard();
+    }
+}
+
+
+function goHome() {
+
+    reviewMode = false;
+
+    learningMode = false;
+
+    clearInterval(timer);
+
+    showOnly("home");
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function updateDashboard() {
+
+    document.getElementById(
+        "homeLevel"
+    ).textContent =
+    level;
+
+    document.getElementById(
+        "homeXP"
+    ).textContent =
+    xp;
+
+    document.getElementById(
+        "homeStreak"
+    ).textContent =
+    streak;
+
+    document.getElementById(
+        "levelText"
+    ).textContent =
+    "Niveau " + level;
+
+    let needed =
+        level * 100;
+
+    document.getElementById(
+        "xpText"
+    ).textContent =
+    xp + " / " + needed + " XP";
+
+    document.getElementById(
+        "xpFill"
+    ).style.width =
+    Math.min(
+        100,
+        xp / needed * 100
+    ) + "%";
+
+    updateSelectedInfo();
+}
+
+
+/* =====================================================
+   SAUVEGARDE
+===================================================== */
+
+function saveAll() {
+
+    localStorage.setItem(
+        "multiplicationMistakes",
+        JSON.stringify(mistakes)
+    );
+
+    localStorage.setItem(
+        "multiplicationMastery",
+        JSON.stringify(mastery)
+    );
+
+    localStorage.setItem(
+        "multiplicationXP",
+        xp
+    );
+
+    localStorage.setItem(
+        "multiplicationLevel",
+        level
+    );
+
+    localStorage.setItem(
+        "multiplicationStreak",
+        streak
+    );
+
+    localStorage.setItem(
+        "multiplicationBestStreak",
+        bestStreak
+    );
+
+    localStorage.setItem(
+        "multiplicationBadges",
+        JSON.stringify(badges)
+    );
+}
+
+
+/* =====================================================
+   INITIALISATION
+===================================================== */
+
+updateDashboard();
+
+
+/* =====================================================
    SERVICE WORKER PWA
 ===================================================== */
 
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker
-            .register("./service-worker.js")
-            .then(() => {
-              console.log("✅ PWA : Service Worker actif");
-            })
-            .catch((error) => {
-              console.error("Erreur PWA :", error);
-            });
-        });
-      }
-    </script>
-  </body>
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            navigator.serviceWorker
+                .register(
+                    "./service-worker.js"
+                )
+                .then(() => {
+
+                    console.log(
+                        "✅ PWA : Service Worker actif"
+                    );
+
+                })
+                .catch(error => {
+
+                    console.error(
+                        "Erreur PWA :",
+                        error
+                    );
+
+                });
+
+        }
+    );
+}
+
+</script>
+
+</body>
 </html>
