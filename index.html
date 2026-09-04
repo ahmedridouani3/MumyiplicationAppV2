@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Jeu des Multiplications</title>
+
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#4CAF50" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🧮 Jeu des Multiplications</h1>
+
+      <div id="niveau">Niveau 1</div>
+
+      <div id="question">3 × 4 = ?</div>
+
+      <input
+        type="number"
+        id="reponse"
+        placeholder="Ta réponse"
+        autocomplete="off"
+      />
+
+      <button onclick="verifierReponse()">Vérifier</button>
+
+      <div id="message"></div>
+
+      <div class="score">Score : <span id="score">0</span></div>
+
+      <div class="progression">Question <span id="numero">1</span> / 10</div>
+
+      <button onclick="reinitialiser()">🔄 Réinitialiser</button>
+    </div>
+
+    <script src="app.js"></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./service-worker.js")
+            .then(() => {
+              console.log("Service Worker enregistré !");
+            })
+            .catch((error) => {
+              console.error("Erreur Service Worker :", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

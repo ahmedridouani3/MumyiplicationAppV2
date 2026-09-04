@@ -1,0 +1,215 @@
+/* Jeu des Multiplications — style
+   Palette: sage paper background, deep-green ink, coral accent for score,
+   Fredoka for numbers/headline, Quicksand for interface text. */
+
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap");
+
+:root {
+  --paper: #eaf3ea;
+  --card: #ffffff;
+  --ink: #33302a;
+  --green: #4caf50;
+  --green-deep: #2e7d32;
+  --coral: #ff7043;
+  --error: #e5533d;
+  --line: #d9e6d9;
+
+  --font-display: "Fredoka", "Quicksand", system-ui, sans-serif;
+  --font-body: "Quicksand", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px);
+  background-size: 100% 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 22rem;
+  background: var(--card);
+  border-radius: 1.75rem;
+  border: 2px dashed var(--green);
+  padding: 2rem 1.75rem 1.75rem;
+  text-align: center;
+  box-shadow: 0 1.25rem 2.5rem -1rem rgba(46, 125, 50, 0.35);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin: 0 0 1.1rem;
+  line-height: 1.3;
+}
+
+#niveau {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: var(--green-deep);
+  background: var(--paper);
+  border: 1.5px solid var(--green);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  margin-bottom: 1.4rem;
+}
+
+#question {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 1.4rem;
+  letter-spacing: 0.01em;
+}
+
+#reponse {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--line);
+  border-radius: 1rem;
+  background: var(--paper);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+#reponse:focus-visible {
+  border-color: var(--green);
+  background: #ffffff;
+}
+
+/* Hide number input spinners for a cleaner flashcard look */
+#reponse::-webkit-outer-spin-button,
+#reponse::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#reponse[type="number"] {
+  -moz-appearance: textfield;
+}
+
+button {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 1rem;
+  transition: transform 0.1s ease, background 0.15s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+body > .container > button[onclick^="verifierReponse"] {
+  width: 100%;
+  margin-top: 0.85rem;
+  padding: 0.8rem;
+  background: var(--green);
+  color: #ffffff;
+  font-size: 1.05rem;
+}
+
+body > .container > button[onclick^="verifierReponse"]:hover {
+  background: var(--green-deep);
+}
+
+#message {
+  min-height: 1.6rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#message.correct {
+  color: var(--green-deep);
+}
+
+#message.incorrect {
+  color: var(--error);
+}
+
+#message.info {
+  color: var(--coral);
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1.4rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.score span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.7rem;
+  height: 1.7rem;
+  padding: 0 0.35rem;
+  background: var(--coral);
+  color: #ffffff;
+  border-radius: 999px;
+  font-family: var(--font-display);
+}
+
+.progression {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #6b6355;
+}
+
+button[onclick^="reinitialiser"] {
+  margin-top: 1.4rem;
+  background: transparent;
+  color: #6b6355;
+  padding: 0.5rem 0.9rem;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+button[onclick^="reinitialiser"]:hover {
+  border-color: var(--green);
+  color: var(--green-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+}
+
+@media (max-width: 360px) {
+  #question {
+    font-size: 2.2rem;
+  }
+}
