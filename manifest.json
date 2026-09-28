@@ -1,5 +1,5 @@
 {
-  "name": "Tables de multiplication",
+  "name": "Les multiplications",
   "short_name": "Multiplication",
   "description": "Application pour apprendre et réviser les tables de multiplication de 1 à 9",
   "start_url": "./index.html",
